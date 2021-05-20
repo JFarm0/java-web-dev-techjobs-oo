@@ -54,11 +54,24 @@ public class JobTest {
         Job test_job6 = new Job("CEO", new Employer("Apple"), new Location("Moon"), new PositionType("Executive"), new CoreCompetency("Inspiration"));
         assertTrue(test_job6.toString().equals("\n" +
                 "ID: 3" +
-                "Name: CEO" +
-                "Employer: Apple" +
-                "Location: Moon" +
-                "Position Type: Executive" +
-                "Core Competency: Inspiration" +
+                "\nName: CEO" +
+                "\nEmployer: Apple" +
+                "\nLocation: Moon" +
+                "\nPosition Type: Executive" +
+                "\nCore Competency: Inspiration" +
+                "\n"));
+    }
+
+    @Test
+    public void testJobToStringWithEmpty() {
+        Job test_job7 = new Job("Job name", new Employer("Company"), new Location("Amsterdam"), new PositionType(""), new CoreCompetency(""));
+        assertTrue(test_job7.toString().equals("\n" +
+                "ID: 3" +
+                "\nName: Job name" +
+                "\nEmployer: Company" +
+                "\nLocation: Amsterdam" +
+                "\nPosition Type: Data not available" +
+                "\nCore Competency: Data not available" +
                 "\n"));
     }
 }
