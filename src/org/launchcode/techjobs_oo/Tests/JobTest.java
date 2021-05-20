@@ -48,4 +48,17 @@ public class JobTest {
         Job test_job5 = new Job("Tester", new Employer("IBM"), new Location("Seattle"), new PositionType("QA"), new CoreCompetency("Communication"));
         assertFalse(test_job4.getId() == test_job5.getId());
     }
+
+    @Test
+    public void testJobToString() {
+        Job test_job6 = new Job("CEO", new Employer("Apple"), new Location("Moon"), new PositionType("Executive"), new CoreCompetency("Inspiration"));
+        assertTrue(test_job6.toString().equals("\n" +
+                "ID: 3" +
+                "Name: CEO" +
+                "Employer: Apple" +
+                "Location: Moon" +
+                "Position Type: Executive" +
+                "Core Competency: Inspiration" +
+                "\n"));
+    }
 }
