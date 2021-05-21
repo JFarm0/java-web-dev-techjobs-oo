@@ -10,11 +10,21 @@ public class JobTest {
 
     Job test_job1;
     Job test_job2;
+    Job test_job3;
+    Job test_job4;
+    Job test_job5;
+    Job test_job6;
+    Job test_job7;
 
     @Before
     public void createJobObject() {
         test_job1 = new Job();
         test_job2 = new Job();
+        test_job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        test_job4 = new Job("Tester", new Employer("IBM"), new Location("Seattle"), new PositionType("QA"), new CoreCompetency("Communication"));
+        test_job5 = new Job("Tester", new Employer("IBM"), new Location("Seattle"), new PositionType("QA"), new CoreCompetency("Communication"));
+        test_job6 = new Job("CEO", new Employer("Apple"), new Location("Moon"), new PositionType("Executive"), new CoreCompetency("Inspiration"));
+        test_job7 = new Job("Job name", new Employer("Company"), new Location("Amsterdam"), new PositionType(""), new CoreCompetency(""));
     }
 
     @Test
@@ -29,7 +39,6 @@ public class JobTest {
 
     @Test
     public void testJobConstructorSetsAllFields() {
-        Job test_job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertTrue(test_job3.getId() == (int)test_job3.getId());
         assertTrue(test_job3.getName().equals("Product tester"));
         assertTrue(test_job3.getEmployer() instanceof Employer);
@@ -44,16 +53,13 @@ public class JobTest {
 
     @Test
     public void testJobsForEquality() {
-        Job test_job4 = new Job("Tester", new Employer("IBM"), new Location("Seattle"), new PositionType("QA"), new CoreCompetency("Communication"));
-        Job test_job5 = new Job("Tester", new Employer("IBM"), new Location("Seattle"), new PositionType("QA"), new CoreCompetency("Communication"));
         assertFalse(test_job4.getId() == test_job5.getId());
     }
 
     @Test
     public void testJobToString() {
-        Job test_job6 = new Job("CEO", new Employer("Apple"), new Location("Moon"), new PositionType("Executive"), new CoreCompetency("Inspiration"));
         assertTrue(test_job6.toString().equals("\n" +
-                "ID: 3" +
+                "ID: " + test_job6.getId() +
                 "\nName: CEO" +
                 "\nEmployer: Apple" +
                 "\nLocation: Moon" +
@@ -64,9 +70,8 @@ public class JobTest {
 
     @Test
     public void testJobToStringWithEmpty() {
-        Job test_job7 = new Job("Job name", new Employer("Company"), new Location("Amsterdam"), new PositionType(""), new CoreCompetency(""));
         assertTrue(test_job7.toString().equals("\n" +
-                "ID: 3" +
+                "ID: " + test_job7.getId() +
                 "\nName: Job name" +
                 "\nEmployer: Company" +
                 "\nLocation: Amsterdam" +
